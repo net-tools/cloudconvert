@@ -1,0 +1,29 @@
+{
+    "name" : "net-tools/cloudconvert",
+	
+    "description" : "Composer library for Cloud Convert API",
+	
+	"type": "library",
+	
+	"autoload": {
+		"psr-4": {
+			"Nettools\\CloudConvert\\": "src/"
+		}
+    },
+	 
+	"require" : {
+		"php": ">= 7.0.0",
+		"lib-curl" : "*"
+	},
+	
+    "license" : "MIT",
+
+    "authors": [
+        {
+            "name": "Pierre",
+            "email": "dev@net-tools.ovh",
+            "role": "Developer"
+        }
+    ]
+
+}
