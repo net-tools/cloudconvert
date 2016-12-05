@@ -31,8 +31,8 @@ For details about parameters and values returned, you may refer to the CloudConv
 // $URL refers to a file hosted on your website will be downloaded 
 // and converted (e.g. : http://mysite.info/test.pdf).
 $client = new Nettools\CloudConvert\Client($apikey);
-$client->convertDownload('pdf', 'txt', $url);
+$client->convertDownload('pdf', 'txt', $url, array('download'=>'inline'));
 // and also :
-$client->convertUpload('pdf', 'txt', '/home/tmp/mypdf.pdf');
+$client->convertUpload('pdf', 'txt', '/home/tmp/mypdf.pdf', array('download'=>'inline'));
 ```
 
