@@ -5,15 +5,27 @@ namespace Nettools\CloudConvert;
 
 
 
-
+/**
+ * Helper class to interface with CloudConvert API
+ * 
+ * @see http://www.cloudconvert.com
+ */
 class Client
 {
-	// url api
+	/** 
+     * URL for CloudConvert api
+     * 
+     * @var string
+     */
 	const CC_API = 'https://api.cloudconvert.com/';
 	
-		
-	
-	// prepare request
+			
+	/** 
+     * Prepare a request from parameters in an array
+     * 
+     * @params Array $params Parameters for the request (associative array key=value)
+     * @return string The params converted to a URL query-string
+     */
 	protected function _createRequest($params)
 	{
 		$ret = array();
@@ -24,18 +36,30 @@ class Client
 	}
 		
 	
-	// user api key
+	/**
+     * Store user api key
+     * 
+     * @var string
+     */
 	public $apikey = NULL;
 		
 	
-	// constructor
+	/**
+     * Constructor
+     * 
+     * @param string $apikey The user API key (fetch it from your CloudConvert account)
+     */
 	public function __construct($apikey)
 	{
 		$this->apikey = $apikey;
 	}
 	
 		
-	// list conversions
+	/** 
+     * Get a list of conversions
+     * 
+     * @return object The list of conversions as a litteral object
+     */
 	public function listConversions()
 	{
 //		$list = file_get_contents('https://api.cloudconvert.com/processes?apikey=' . App_Frmk_Application::$appRegistry->fact_cloudconvert_apikey);
@@ -43,14 +67,20 @@ class Client
 	}
 	
 	
-	// delete conversion
+	/**
+     * Delete conversion
+     * 
+     * @param string $url URL of the conversion to delete ; the URL is returned by listConversions, for example
+     */
 	public function deleteConversion($url)
 	{
 		return $this->execute('DELETE', 'https:' . $url);
 	}
 	
 	
-	// delete all conversions
+	/** 
+     * Delete all conversions
+     */
 	public function deleteConversions()
 	{
 		$list = $this->listConversions();
@@ -61,7 +91,15 @@ class Client
 	}
 	
 	
-	// convert a file that'll we downloaded by cloudconvert servers to be processed
+	/**
+     * Convert a file that'll we downloaded by cloudconvert servers to be processed
+     * 
+     * @param string $inputformat The input format ('pdf', 'doc', etc.)
+     * @param string $outputformat The output format ('jpg', 'txt', etc.)
+     * @param string $fileurl The URL of the file on your webserver
+     * @param array $params Optionnal parameters
+     * @return object Object litteral describing the request response
+     */
 	public function convertDownload($inputformat, $outputformat, $fileurl, $params = array())
 	{
 		$params['apikey'] = $this->apikey;
@@ -75,7 +113,15 @@ class Client
 	}
 	
 	
-	// convert some data (to be uploaded to CloudConvert)
+	/**
+     * Convert some data (to be uploaded to CloudConvert)
+     * 
+     * @param string $inputformat The input format ('pdf', 'doc', etc.)
+     * @param string $outputformat The output format ('jpg', 'txt', etc.)
+     * @param string $data String containing the data to convert
+     * @param array $params Optionnal parameters
+     * @return object Object litteral describing the request response
+     */
 	public function convertUploadData($inputformat, $outputformat, $data, $params = array())
 	{
 		// create a temporary file with the correct extension
@@ -98,7 +144,15 @@ class Client
 	}
 	
 	
-	// convert a file that'll be uploaded along with the request
+	/**
+     * Convert a file that'll be uploaded to cloudconvert servers to be processed
+     * 
+     * @param string $inputformat The input format ('pdf', 'doc', etc.)
+     * @param string $outputformat The output format ('jpg', 'txt', etc.)
+     * @param string $file The local path of the file to upload
+     * @param array $params Optionnal parameters
+     * @return object Object litteral describing the request response
+     */
 	public function convertUpload($inputformat, $outputformat, $file, $params = array())
 	{
 		$params['apikey'] = $this->apikey;
@@ -112,7 +166,13 @@ class Client
 	}
 	
 	
-	// execute the request
+	/**
+     * Execute the request 
+     * 
+     * @param string $verb GET/POST/DELETE http verb
+     * @param string $url CloudConvert API url
+     * @param array $params Request parameters
+     */
 	public function execute($verb, $url, $params = array())
 	{
 		// init curl
