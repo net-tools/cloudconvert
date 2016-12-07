@@ -23,7 +23,7 @@ class Client
 	/** 
      * Prepare a request from parameters in an array
      * 
-     * @params string[] $params Parameters for the request (associative array key=value)
+     * @param string[] $params Parameters for the request (associative array key=value)
      * @return string The params converted to a URL query-string
      */
 	protected function _createRequest($params)
