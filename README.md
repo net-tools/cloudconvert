@@ -20,7 +20,7 @@ The Client class must be instantiated with an API key (get it from you CloudConv
 - convertUploadData (the data to be converted is a string)
 - convertUpload (the file to be converted is uploaded with the request)
 
-For details about parameters and values returned, you may refer to the CloudConvert API, as this Client class in only a facade pattern, abstracting technicial details, such as performing the actual HTTP request, to the end-user.
+For details about parameters and values returned, you may refer to the CloudConvert API, as this Client class in only a facade pattern, abstracting technical details, such as performing the actual HTTP request, to the end-user.
 
 
 
@@ -40,4 +40,4 @@ $client->convertUpload('pdf', 'txt', '/home/tmp/mypdf.pdf', array('download'=>'i
 ## API Reference
 
 To read the entire API reference, please refer to the PHPDoc here : 
-http://net-tools.ovh/api-reference/net-tools/Nettools/CloudConvert.html
+http://nettools.ovh/api-reference/net-tools/Nettools/CloudConvert.html
