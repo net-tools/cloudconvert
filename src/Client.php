@@ -17,7 +17,7 @@ class Client
      * 
      * @var string
      */
-	const CC_API = 'https://api.cloudconvert.com/';
+	const CC_API = 'https://api.cloudconvert.com/v1/';
 	
 			
 	/** 
