@@ -37,7 +37,3 @@ $client->convertUpload('pdf', 'txt', '/home/tmp/mypdf.pdf', array('download'=>'i
 ```
 
 
-## API Reference
-
-To read the entire API reference, please refer to the PHPDoc here : 
-http://nettools.ovh/api-reference/net-tools/Nettools/CloudConvert.html
